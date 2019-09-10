@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+<head>
+    <title>portal</title>
+    <link rel="stylesheet" type="text/css" href="{% static "style/mystyle.css" %}">
+</head>
+
+
+<body>
+    <div class="frame">
+    <div class="toptitle"> <img height="30" src="{% static "img/aist_logo.jpg" %}"/>
+        PRAGMA AI / DATA PORTAL</div>
+
+    <div class="resourcelist">
+    <div class="resourcename"> AI Modules</div>
+    
+        {% for item in mod_list %}
+        <div class="resource">{{ item }}</div>
+        {% endfor %}
+    </div>
+    
+    <div class="resourcelist">
+    <div class="resourcename"> Computation Resources </div>
+    
+        {% for item in cr_list %}
+        <div class="resource">{{ item }}</div>
+        {% endfor %}
+    </div>
+
+    
+    <div class="resourcelist">
+    <div class="resourcename"> Data Resources </div>
+    
+    {% for item in dr_list %}
+        <div class="resource">{{ item }}</div>
+        {% endfor %}
+    </div>
+    </div>
+</body>
+
+
+</html>

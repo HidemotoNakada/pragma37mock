@@ -1,0 +1,8 @@
+<ul class="list-group" id="{{ item_list.name }}">
+    {% for id, name in item_list.list.items %}
+    <li class="list-group-item list-group-item-action list-group-item-primary" 
+        id="{{ id }}" > 
+        {{ name }}
+    </li>
+    {% endfor %}
+</ul>

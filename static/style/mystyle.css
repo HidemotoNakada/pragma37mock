@@ -1,0 +1,42 @@
+div.frame {
+  margin: 30px 70px 30px 70px;
+
+
+}
+
+div.toptitle {
+  padding: 5px 5px 5px 5px;
+  background-color: darkgray;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 160%;
+
+}
+
+div.resourcename {
+  padding: 5px 5px 5px 5px;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 140%;
+
+}
+
+
+div.resourcelist {
+  margin: 10px 0px 10px 0px;
+  padding: 10px 10px 10px 10px;
+  border: solid 1pt;
+  border-color: lightgray;
+  color: lightgray;
+}
+
+div.resource {
+  margin: 1px 0px 1px 0px;
+  padding: 20px 10px 20px 10px;
+  background-color: Gainsboro;
+  font-family: Arial, Helvetica, sans-serif;
+  color: darkslategray;
+  ;
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Portal</title>
+</head>
+
+<body>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="static/myjs/index.js"> </script>
+
+
+    <div class="jumbotron text-center">
+        <h1> AI / Data Portal </h1>
+        <p>for PRAGMA 37 Demo</p>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>AI Modules</h3>
+                {% include "listitem2.html" with item_list=mod_list %}
+            </div>
+            <div class="col-sm-4">
+                <h3>Compute Resources </h3>
+                {% include "listitem2.html" with item_list=cr_list %}
+            </div>
+            <div class="col-sm-4">
+                <h3>Data Resources</h3>
+                {% include "listitem2.html" with item_list=dr_list %}
+            </div>
+        </div>
+    </div>
+
+    <div class="jumbotoron text-center">
+        <div style="padding : 20pt 0pt 20pt 0pt;">
+            <button id="launch" type="button" class="btn btn-success btn-lg"> LAUNCH </button>
+        </div>
+    </div>
+
+
+    <div class="container">
+         <h2>Notebooks</h2>
+         <table class="table">
+        <thead>
+            <tr>
+                <th> notebook id </th>
+                <th> Launch time</th>
+                <th> URL </th>
+                <th> Status </th>
+                <th> Close </th>
+            </tr>
+        </thead>
+        <tbody id="notebooklist">
+        </tbody>
+        </table>
+    </div>
+</body>
+
+
+</html>
