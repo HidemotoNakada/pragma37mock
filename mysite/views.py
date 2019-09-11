@@ -2,7 +2,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 from django.template.loader import *
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
 import json
 from mysite.nbdummy import *
@@ -29,6 +30,9 @@ dr_list = item_list('dr',  {
         'formosat': "Taiwan: Formosat Satelite Data", 
 })    
 
+
+
+@login_required(login_url='/login')
 def index(request):
     return  render(request, 'index.html', {
         'dr_list': dr_list,
@@ -36,6 +40,8 @@ def index(request):
         'mod_list': mod_list,
     }, content_type='text/html')
 
+
+@login_required(login_url='/login')
 def index2(request):
     return  render(request, 'index2.html', {
         'dr_list': dr_list,
@@ -46,6 +52,7 @@ def index2(request):
 nbm = NotebookManager()
 
 
+@login_required(login_url='/login')
 @csrf_exempt
 def launch(request):
     d = request.POST
@@ -60,11 +67,14 @@ nb = {"id": "0x0000", "time":"2019/9/12 00:00:00", "url": "https://localhost:800
 nb2 = {"id": "0x0001", "time":"2019/9/12 00:00:00", "url": "https://localhost:8000", "status":"shutdown"}
 
 
+@login_required(login_url='/login')
 def notebooks(request):
     return HttpResponse(
         content=json.dumps(nbm.getStatusDictList()),
         content_type='application/json')
 
+
+@login_required(login_url='/login')
 @csrf_exempt
 def shutdown(request):
     print(request.POST['id'])
@@ -72,3 +82,40 @@ def shutdown(request):
     return HttpResponse(
         content='{"result" : "success"}',
         content_type='application/json')
+
+
+from django.contrib.auth import logout
+
+def logout_view(request):
+    logout(request)
+    return HttpResponse(
+        content='<h1>logged out</h1>',
+        content_type='text/html')
+
+def login_view(request):
+    return  render(request, 'login.html', 
+    content_type='text/html')
+
+from django.contrib.auth import authenticate, login
+
+@csrf_exempt
+def auth(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('index2.html')
+    else:
+        return  render(request, 'failed.html', 
+                content_type='text/html')
+        
+
+
+from django.contrib.auth.models import User
+def createuser():
+    user = User.objects.create_user('pragma', 'hidemoto.nakada@gmail.com', 'pragmademo')
+    user.save()
+
+
+#createuser()
