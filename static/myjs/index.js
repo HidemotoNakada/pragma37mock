@@ -53,16 +53,20 @@ function shutdown(id) {
 
 function notebook_str(obj) {
     var closebutton = "";
+    var urlbutton = "";
+
     if (obj.status == "RUNNING") {
-        closebutton = "<span onclick=\"shutdown('" +   
+        closebutton = "<img src=\"/static/img/close.png\" onclick=\"shutdown('" +   
             obj.id +
-            "')\"> shutdown </span>";
+            "')\" width=\"20pt\" > ";
+
+        urlbutton = "<img src=\"/static/img/open.png\" width=\"25pt\"> ";
     }
     console.log(closebutton);
     return "<tr>" +
         "<td>" + obj.id + "</td>" +
         "<td>" + obj.time + "</td> " +      
-        "<td><a href=\"" + obj.url + "\" target=\"_blank\">Click</td> " +      
+        "<td><a href=\"" + obj.url + "\" target=\"_blank\">" + urlbutton + "</td> " +      
         "<td>" + obj.status + "</td> " + 
         "<td>" + closebutton + "</td> " + 
         "</tr>"
