@@ -66,6 +66,7 @@ function notebook_str(obj) {
     return "<tr>" +
         "<td>" + obj.id + "</td>" +
         "<td>" + obj.time + "</td> " +      
+        "<td>" + obj.cr + "</td> " +      
         "<td><a href=\"" + obj.url + "\" target=\"_blank\">" + urlbutton + "</td> " +      
         "<td>" + obj.status + "</td> " + 
         "<td>" + closebutton + "</td> " + 

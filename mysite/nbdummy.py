@@ -26,6 +26,7 @@ class Notebook(object):
         return {"id": self.id.__str__(), 
                 "time": self.time.__str__(), 
                 "url": self.url, 
+                "cr": self.cr,
                 "status": self.status.name}
 
 
